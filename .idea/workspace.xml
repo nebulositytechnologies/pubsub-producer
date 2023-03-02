@@ -4,15 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ccc77a83-c6e7-4893-aa71-af8a7164c2c8" name="Changes" comment="Publish message to topic.">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/nebulositytech/AsyncSubscriber.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/nebulositytech/KeepSubscriptionAlive.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/nebulositytech/PullSubscriber.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/nebulositytech/ReactiveSubscriber.java" afterDir="false" />
+    <list default="true" id="ccc77a83-c6e7-4893-aa71-af8a7164c2c8" name="Changes" comment="Subscriber properties">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/nebulositytech/MonoTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/nebulositytech/PartnerProcessingState.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/nebulositytech/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nebulositytech/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/nebulositytech/ReactiveSubscriber.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/nebulositytech/ReactiveSubscriber.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,6 +69,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -104,7 +102,7 @@
       <recent name="org.nebulositytech" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.Main">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.nebulositytech.Main" />
       <module name="pubsub-producer.main" />
@@ -119,8 +117,26 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="MonoTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.nebulositytech.MonoTest" />
+      <module name="pubsub-producer.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.nebulositytech.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.MonoTest" />
+      <item itemvalue="Application.Main" />
+    </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.MonoTest" />
         <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
@@ -155,12 +171,20 @@
       <option name="project" value="LOCAL" />
       <updated>1677723935039</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Subscriber properties">
+      <created>1677773557575</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1677773557575</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Init commit" />
     <MESSAGE value="Publish message to topic." />
-    <option name="LAST_COMMIT_MESSAGE" value="Publish message to topic." />
+    <MESSAGE value="Subscriber properties" />
+    <option name="LAST_COMMIT_MESSAGE" value="Subscriber properties" />
   </component>
 </project>
