@@ -1,0 +1,12 @@
+spring:
+  cloud:
+    gcp:
+      pubsub:
+        project-id: nebulosity-labs
+        publisher:
+          executor-threads: 4
+          flow-control:
+            max-outstanding-element-count: 100
+dxs:
+  subscription-name: projects/nebulosity-labs/subscriptions/dxs-partner-hub-sub
+  topic-name: dxs-partner-hub

@@ -1,13 +1,19 @@
 package org.nebulositytech;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.util.concurrent.ExecutionException;
+
 @SpringBootApplication
 @Slf4j
 public class Main implements CommandLineRunner {
+
+  @Autowired Sender sender;
+
   public static void main(String[] args) {
     log.info("STARTING THE APPLICATION");
     SpringApplication.run(Main.class, args);
@@ -15,10 +21,10 @@ public class Main implements CommandLineRunner {
   }
 
   @Override
-  public void run(String... args) {
+  public void run(String... args) throws ExecutionException, InterruptedException {
     log.info("EXECUTING : command line runner");
-    for (int i = 0; i < args.length; ++i) {
-      log.info("args[{}]: {}", i, args[i]);
+    for (int i = 0; i < 200; ++i) {
+      sender.send();
     }
   }
 }

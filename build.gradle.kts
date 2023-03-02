@@ -19,7 +19,7 @@ dependencies {
                     ".boot:spring-boot-dependencies:2.7.9"
         )
     )
-    implementation("org.springframework.boot:spring-boot-starter")
+    implementation("org.springframework.boot:spring-boot-starter-webflux")
 //    {
 //        exclude("org.springframework.boot:spring-boot-starter-logging")
 //    }
