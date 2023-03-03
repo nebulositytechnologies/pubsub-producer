@@ -2,11 +2,10 @@
 <Configuration status="ERROR">
     <Appenders>
         <Console name="Console" target="SYSTEM_OUT">
-            <JsonTemplateLayout
-                    eventTemplateUri="classpath:LogstashJsonEventLayoutV1.json"/>
-
-            <!--            <PatternLayout-->
-            <!--                    pattern="%style{%d{ISO8601}}{black} %highlight{%-5level }[%style{%t}{bright,blue}] %style{%C{1.}}{bright,yellow}: %msg%n%throwable"/>-->
+            <!--            <JsonTemplateLayout-->
+            <!--                    eventTemplateUri="classpath:EcsLayout.json"/>-->
+            <PatternLayout
+                    pattern="%style{%d{COMPACT}}{black} %highlight{%-5level }[%style{%t}{bright,blue}] %style{%C{1.}}{bright,yellow}: %msg%n%throwable"/>
         </Console>
 
         <RollingFile name="RollingFile"
