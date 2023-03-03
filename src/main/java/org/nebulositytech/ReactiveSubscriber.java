@@ -1,9 +1,12 @@
 package org.nebulositytech;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.cloud.spring.pubsub.core.PubSubTemplate;
 import com.google.cloud.spring.pubsub.reactive.PubSubReactiveFactory;
 import com.google.cloud.spring.pubsub.support.AcknowledgeablePubsubMessage;
+import com.google.cloud.spring.pubsub.support.converter.JacksonPubSubMessageConverter;
 import lombok.extern.slf4j.Slf4j;
+import org.nebulositytech.model.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -37,6 +40,9 @@ public class ReactiveSubscriber {
 
   Scheduler boundedElastic = Schedulers.boundedElastic();
 
+  JacksonPubSubMessageConverter jacksonPubSubMessageConverter =
+      new JacksonPubSubMessageConverter(new ObjectMapper());
+
   private Mono<Tuple2<AcknowledgeablePubsubMessage, PartnerProcessingState>> handleMessage(
       AcknowledgeablePubsubMessage message) {
 
@@ -62,10 +68,14 @@ public class ReactiveSubscriber {
 
               // If processing is successful
               //              log.info("Message: {}", counter);
+              Employee employee =
+                  jacksonPubSubMessageConverter.fromPubSubMessage(
+                      message.getPubsubMessage(), Employee.class);
+              log.info("Emp: {}", employee);
               return Tuples.of(message, PartnerProcessingState.SUCCESS);
             })
         .subscribeOn(boundedElastic)
-        .timeout(Duration.ofSeconds(3))
+        .timeout(Duration.ofSeconds(120))
         .onErrorResume(
             throwable -> {
               log.error("Handling Timeout", throwable);
@@ -74,10 +84,11 @@ public class ReactiveSubscriber {
   }
 
   public void pull() {
+    pubSubTemplate.setMessageConverter(new JacksonPubSubMessageConverter(new ObjectMapper()));
     Flux<AcknowledgeablePubsubMessage> flux = reactiveFactory.poll(subscriptionName, 1000);
     flux.limitRate(100)
         .flatMap(this::handleMessage, 25)
-        //        .doOnNext(message -> log.info("Received message number: " + message))
+        //        .doOnNext(message -> log.info(message.getT1().getPubsubMessage().))
         .subscribe(
             message -> {
               if (message.getT2() == PartnerProcessingState.SUCCESS

@@ -39,6 +39,5 @@ public class MonoTest {
                     .subscribeOn(boundedElastic))
         .doOnNext(objects -> log.info("{} {}", objects.getT1(), objects.getT2()))
         .subscribe();
-
   }
 }

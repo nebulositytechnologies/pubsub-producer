@@ -1,12 +1,11 @@
 package org.nebulositytech;
 
+import java.util.concurrent.ExecutionException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-
-import java.util.concurrent.ExecutionException;
 
 @SpringBootApplication
 @Slf4j
@@ -26,10 +25,10 @@ public class Main implements CommandLineRunner {
 
   @Override
   public void run(String... args) throws ExecutionException, InterruptedException {
-    log.info("EXECUTING : command line runner");
-//    for (int i = 0; i < 1000; ++i) {
-//      sender.send();
-//    }
+    //    log.info("EXECUTING : command line runner");
+    //    for (int i = 0; i < 1000; ++i) {
+    //      sender.send();
+    //    }
 
     reactiveSubscriber.pull();
   }
