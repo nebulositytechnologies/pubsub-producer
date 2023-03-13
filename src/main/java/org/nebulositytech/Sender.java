@@ -8,20 +8,21 @@ import org.nebulositytech.model.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
-import org.springframework.util.concurrent.ListenableFuture;
 
 import java.util.Collections;
 import java.util.Map;
+import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 
 @Component
 @Slf4j
 public class Sender {
   @Autowired PubSubTemplate pubSubTemplate;
+
   @Value("${dxs.topic-name}")
   String topicName;
 
-  public void send() throws ExecutionException, InterruptedException {
+  public void send() {
     pubSubTemplate.setMessageConverter(new JacksonPubSubMessageConverter(new ObjectMapper()));
 
     Employee employee = new Employee();
@@ -29,9 +30,13 @@ public class Sender {
     employee.setLName("Akkineni" + Math.random());
 
     Map<String, String> headers = Collections.singletonMap("key", "val");
-    ListenableFuture<String> listenableFuture =
+    CompletableFuture<String> completableFuture =
         pubSubTemplate.publish(topicName, employee, headers);
 
-    log.info("message = {}", listenableFuture.get());
+    try {
+      log.info("message = {}", completableFuture.get());
+    } catch (InterruptedException | ExecutionException e) {
+      log.error("exception sending!", e);
+    }
   }
 }

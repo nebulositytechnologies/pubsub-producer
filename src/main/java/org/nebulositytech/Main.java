@@ -1,21 +1,21 @@
 package org.nebulositytech;
 
-import java.util.concurrent.ExecutionException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import reactor.core.scheduler.Scheduler;
+import reactor.core.scheduler.Schedulers;
+
+import java.util.concurrent.ExecutionException;
 
 @SpringBootApplication
 @Slf4j
 public class Main implements CommandLineRunner {
 
   @Autowired Sender sender;
-  @Autowired AsyncSubscriber asyncSubscriber;
-  @Autowired KeepSubscriptionAlive keepSubscriptionAlive;
   @Autowired ReactiveSubscriber reactiveSubscriber;
-  @Autowired PullSubscriber pullSubscriber;
 
   public static void main(String[] args) {
     log.info("STARTING THE APPLICATION");
@@ -23,12 +23,26 @@ public class Main implements CommandLineRunner {
     log.info("APPLICATION FINISHED");
   }
 
+  private static final Scheduler elastic = Schedulers.boundedElastic();
+
   @Override
   public void run(String... args) throws ExecutionException, InterruptedException {
-    //    log.info("EXECUTING : command line runner");
-    //    for (int i = 0; i < 1000; ++i) {
-    //      sender.send();
-    //    }
+    log.info("EXECUTING : command line runner");
+    log.info("Program thread :: " + Thread.currentThread().getName());
+
+    //    Flux.range(0, 1000)
+    //        .flatMap(
+    //            index ->
+    //                Mono.fromCallable(
+    //                        () -> {
+    //                          sender.send();
+    //                          return Mono.just(index);
+    //                        })
+    //                    .subscribeOn(elastic),
+    //            100)
+    //        .log()
+    //        //        .subscribeOn(elastic)
+    //        .subscribe(index -> log.info("{}: {}", Thread.currentThread().getName(), index));
 
     reactiveSubscriber.pull();
   }

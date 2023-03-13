@@ -87,6 +87,7 @@ public class ReactiveSubscriber {
     pubSubTemplate.setMessageConverter(new JacksonPubSubMessageConverter(new ObjectMapper()));
     Flux<AcknowledgeablePubsubMessage> flux = reactiveFactory.poll(subscriptionName, 1000);
     flux.limitRate(100)
+        .publishOn(Schedulers.boundedElastic(), 50)
         .flatMap(this::handleMessage, 25)
         //        .doOnNext(message -> log.info(message.getT1().getPubsubMessage().))
         .subscribe(
