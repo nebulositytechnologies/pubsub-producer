@@ -44,6 +44,6 @@ public class Main implements CommandLineRunner {
     //        //        .subscribeOn(elastic)
     //        .subscribe(index -> log.info("{}: {}", Thread.currentThread().getName(), index));
 
-    reactiveSubscriber.pull();
+//    reactiveSubscriber.pull();
   }
 }
