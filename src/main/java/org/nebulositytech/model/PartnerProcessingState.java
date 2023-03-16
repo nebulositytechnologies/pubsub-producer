@@ -1,11 +1,7 @@
-package org.nebulositytech;
+package org.nebulositytech.model;
 
 public enum PartnerProcessingState {
   SUCCESS,
   FAILURE,
-
-  HARD_FAILURE,
-
-  RETRIABLE_FAILURE,
   RETRY
 }

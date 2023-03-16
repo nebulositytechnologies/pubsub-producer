@@ -3,14 +3,19 @@ spring:
     gcp:
       pubsub:
         project-id: nebulosity-labs
+        enabled: true
         publisher:
-          executor-threads: 4
+          executor-threads: 16
           flow-control:
             max-outstanding-element-count: 500
         subscriber:
-          executor-threads: 4
+          executor-threads: 16
           flow-control:
             max-outstanding-element-count: 500
+        reactive:
+          enabled: true
 dxs:
   subscription-name: projects/nebulosity-labs/subscriptions/dxs-partner-hub-sub
   topic-name: dxs-partner-hub
+
+

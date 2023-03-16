@@ -1,6 +1,7 @@
 package org.nebulositytech;
 
 import lombok.extern.slf4j.Slf4j;
+import org.nebulositytech.model.PartnerProcessingState;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import reactor.core.scheduler.Scheduler;
