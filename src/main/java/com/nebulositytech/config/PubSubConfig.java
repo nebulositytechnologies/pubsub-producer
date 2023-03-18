@@ -1,4 +1,4 @@
-package org.nebulositytech.config;
+package com.nebulositytech.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.cloud.spring.pubsub.core.PubSubTemplate;
@@ -7,10 +7,10 @@ import com.google.cloud.spring.pubsub.support.PublisherFactory;
 import com.google.cloud.spring.pubsub.support.SubscriberFactory;
 import com.google.cloud.spring.pubsub.support.converter.JacksonPubSubMessageConverter;
 import com.google.cloud.spring.pubsub.support.converter.PubSubMessageConverter;
+import com.nebulositytech.MessageHandler;
+import com.nebulositytech.model.Employee;
+import com.nebulositytech.model.PartnerProcessingState;
 import lombok.extern.slf4j.Slf4j;
-import org.nebulositytech.MessageHandler;
-import org.nebulositytech.model.Employee;
-import org.nebulositytech.model.PartnerProcessingState;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.context.annotation.Bean;

@@ -1,4 +1,4 @@
-package org.nebulositytech;
+package com.nebulositytech;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;

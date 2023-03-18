@@ -1,8 +1,9 @@
-package org.nebulositytech.controller;
+package com.nebulositytech.controller;
 
+import com.nebulositytech.Sender;
 import lombok.extern.slf4j.Slf4j;
-import org.nebulositytech.Sender;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,6 +16,7 @@ import reactor.core.scheduler.Schedulers;
 @RestController
 @RequestMapping("/messages")
 @Slf4j
+@Cacheable
 public class MessageController {
   private static final Scheduler elastic = Schedulers.boundedElastic();
   @Autowired

@@ -1,4 +1,4 @@
-package org.nebulositytech.model;
+package com.nebulositytech.model;
 
 public enum PartnerProcessingState {
   SUCCESS,

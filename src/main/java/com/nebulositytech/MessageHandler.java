@@ -1,11 +1,11 @@
-package org.nebulositytech;
+package com.nebulositytech;
 
 import com.google.cloud.spring.pubsub.support.AcknowledgeablePubsubMessage;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.nebulositytech.model.Employee;
-import org.nebulositytech.model.PartnerProcessingState;
+import com.nebulositytech.model.Employee;
+import com.nebulositytech.model.PartnerProcessingState;
 import reactor.core.publisher.Mono;
 import reactor.core.scheduler.Scheduler;
 import reactor.core.scheduler.Schedulers;

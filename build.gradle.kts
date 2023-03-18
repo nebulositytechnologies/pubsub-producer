@@ -1,3 +1,5 @@
+import io.spring.gradle.dependencymanagement.dsl.DependencyManagementExtension
+
 plugins {
     id("java")
     id("org.springframework.boot") version "3.0.4"
@@ -15,7 +17,7 @@ repositories {
 extra["springCloudGcpVersion"] = "4.1.2"
 extra["springCloudVersion"] = "2022.0.1"
 
-dependencyManagement {
+configure<DependencyManagementExtension> {
     imports {
         mavenBom("com.google.cloud:spring-cloud-gcp-dependencies:${property("springCloudGcpVersion")}")
         mavenBom(
